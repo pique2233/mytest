@@ -1,10 +1,21 @@
 import { GlobeAltIcon } from '@heroicons/react/24/outline';
-import PropTypes from 'prop-types';
+import Link from 'next/link';
 
-export default function Navbar({ language = 'en', setLanguage }) {
-  const navItems = {
-    en: ['Contact Lenses', 'Clothing', 'Shoes', 'Bags'],
-    zh: ['美瞳', '服装', '鞋', '包']
+export default function Navbar({ language, setLanguage }) {
+  // 修正后的路径映射
+  const navConfig = {
+    en: [
+      { label: 'Contact Lenses', path: '/' },      // 首页
+      { label: 'Clothing', path: '/clothing' },    // 服装页
+      { label: 'Shoes', path: '/shoes' },          // 鞋类页
+      { label: 'Bags', path: '/bags' }             // 箱包页
+    ],
+    zh: [
+      { label: '美瞳', path: '/' },               // 首页
+      { label: '服装', path: '/clothing' },
+      { label: '鞋', path: '/shoes' },
+      { label: '包', path: '/bags' }
+    ]
   };
 
   return (
@@ -12,14 +23,14 @@ export default function Navbar({ language = 'en', setLanguage }) {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex space-x-8">
-            {navItems[language].map((item, index) => (
-              <a 
-                key={index}
-                href="#"
+            {navConfig[language].map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
                 className="text-gray-700 hover:text-purple-600 transition-colors font-medium"
               >
-                {item}
-              </a>
+                {item.label}
+              </Link>
             ))}
           </div>
           <button 
@@ -34,12 +45,3 @@ export default function Navbar({ language = 'en', setLanguage }) {
     </header>
   )
 }
-
-Navbar.propTypes = {
-  language: PropTypes.oneOf(['en', 'zh']),
-  setLanguage: PropTypes.func.isRequired
-};
-
-Navbar.defaultProps = {
-  language: 'en'
-};

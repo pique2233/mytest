@@ -13,25 +13,43 @@ export default function Home() {
 
   // 轮播图数据
   const banners = [
-    '/images/banner1.jpg',
-    '/images/banner2.jpg',
-    '/images/banner3.jpg',
+    '/images/美瞳/banner1.jpg',
+    '/images/美瞳/banner2.jpg',
+    '/images/美瞳/banner3.jpg',
   ];
 
   // 内容数据
   const contentData = {
     zh: {
       sections: [
-        { title: '热门美瞳推荐', images: Array(8).fill('/images/product1.jpg') },
-        { title: '当季流行服饰', images: Array(8).fill('/images/product2.jpg') },
-        { title: '精选鞋款', images: Array(8).fill('/images/product3.jpg') }
+        { 
+          title: '热门美瞳推荐',
+          images: Array.from({ length: 8 }, (_, i) => `/images/contact-lenses/${i + 1}.jpg`)
+        },
+        {
+          title: '当季流行服饰',
+          images: Array.from({ length: 8 }, (_, i) => `/images/clothing/${i + 1}.jpg`)
+        },
+        {
+          title: '精选鞋款',
+          images: Array.from({ length: 8 }, (_, i) => `/images/shoes/${i + 1}.jpg`)
+        }
       ]
     },
     en: {
       sections: [
-        { title: 'Top Contact Lenses', images: Array(8).fill('/images/product1.jpg') },
-        { title: 'Fashion Clothing', images: Array(8).fill('/images/product2.jpg') },
-        { title: 'Featured Shoes', images: Array(8).fill('/images/product3.jpg') }
+        { 
+          title: 'Top Contact Lenses',
+          images: Array.from({ length: 8 }, (_, i) => `/images/美瞳/banner${i + 1}.jpg`)
+        },
+        {
+          title: 'Fashion Clothing',
+          images: Array.from({ length: 8 }, (_, i) => `/images/clothing/${i + 1}.jpg`)
+        },
+        {
+          title: 'Featured Shoes',
+          images: Array.from({ length: 8 }, (_, i) => `/images/shoes/${i + 1}.jpg`)
+        }
       ]
     }
   };
@@ -41,7 +59,7 @@ export default function Home() {
       <Navbar language={language} setLanguage={setLanguage} />
       
       {/* 轮播图 */}
-      <div className="w-full h-[400px]">
+      <div className="w-full h-[600px]">
         <Swiper
           autoplay={{ delay: 3000 }}
           modules={[Autoplay]}
