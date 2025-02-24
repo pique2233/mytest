@@ -1,6 +1,7 @@
 import { GlobeAltIcon } from '@heroicons/react/24/outline';
+import PropTypes from 'prop-types';
 
-export default function Navbar({ language, setLanguage }) {
+export default function Navbar({ language = 'en', setLanguage }) {
   const navItems = {
     en: ['Contact Lenses', 'Clothing', 'Shoes', 'Bags'],
     zh: ['美瞳', '服装', '鞋', '包']
@@ -33,3 +34,12 @@ export default function Navbar({ language, setLanguage }) {
     </header>
   )
 }
+
+Navbar.propTypes = {
+  language: PropTypes.oneOf(['en', 'zh']),
+  setLanguage: PropTypes.func.isRequired
+};
+
+Navbar.defaultProps = {
+  language: 'en'
+};

@@ -2,8 +2,9 @@
 import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
-import Navbar from '../components/Navbar';
+
 import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';  // 使用相对路径
 import 'swiper/css';
 
 export default function Home() {
