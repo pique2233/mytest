@@ -1,101 +1,105 @@
-import Image from "next/image";
+'use client'; // 需要客户端交互的组件
+import { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import 'swiper/css';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [language, setLanguage] = useState('zh');
+  const [selectedImage, setSelectedImage] = useState(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  // 轮播图数据
+  const banners = [
+    '/images/banner1.jpg',
+    '/images/banner2.jpg',
+    '/images/banner3.jpg',
+  ];
+
+  // 内容数据
+  const contentData = {
+    zh: {
+      sections: [
+        { title: '热门美瞳推荐', images: Array(8).fill('/images/product1.jpg') },
+        { title: '当季流行服饰', images: Array(8).fill('/images/product2.jpg') },
+        { title: '精选鞋款', images: Array(8).fill('/images/product3.jpg') }
+      ]
+    },
+    en: {
+      sections: [
+        { title: 'Top Contact Lenses', images: Array(8).fill('/images/product1.jpg') },
+        { title: 'Fashion Clothing', images: Array(8).fill('/images/product2.jpg') },
+        { title: 'Featured Shoes', images: Array(8).fill('/images/product3.jpg') }
+      ]
+    }
+  };
+
+  return (
+    <>
+      <Navbar language={language} setLanguage={setLanguage} />
+      
+      {/* 轮播图 */}
+      <div className="w-full h-[400px]">
+        <Swiper
+          autoplay={{ delay: 3000 }}
+          modules={[Autoplay]}
+          className="h-full"
+        >
+          {banners.map((banner, index) => (
+            <SwiperSlide key={index}>
+              <img 
+                src={banner}
+                alt={`Banner ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      {/* 内容区域 */}
+      <main className="flex-1 container mx-auto px-4 py-12">
+        {contentData[language].sections.map((section, index) => (
+          <section key={index} className="mb-16">
+            <h2 className="text-3xl font-bold mb-8 text-center">
+              {section.title}
+            </h2>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {section.images.map((img, imgIndex) => (
+                <div 
+                  key={imgIndex}
+                  className="group relative cursor-zoom-in"
+                  onClick={() => setSelectedImage(img)}
+                >
+                  <div className="aspect-square overflow-hidden rounded-lg shadow-lg">
+                    <img
+                      src={img}
+                      alt={`Product ${imgIndex + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+
+      {/* 图片查看模态框 */}
+      {selectedImage && (
+        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
+             onClick={() => setSelectedImage(null)}>
+          <img 
+            src={selectedImage} 
+            className="max-w-[90vw] max-h-[90vh] object-contain"
+            alt="Enlarged view" 
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+        </div>
+      )}
+
+      <Footer language={language} />
+    </>
+  )
 }
