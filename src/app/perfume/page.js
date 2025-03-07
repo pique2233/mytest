@@ -15,26 +15,37 @@ export default function ClothingPage() {
     zh: {
       sections: [
         { 
-          title: 'Coach顶级',
-          description:`马鞍腋下包-(388包邮)`,
-          images: Array.from({length: 13}, (_, i) => `/images/bags/coach/${i+1}.png`)
+            title: '🍷·香水',
+            description: `每瓶4.5ml-10ml左右
+        全套包装玻璃瓶身 
+        还是老品质  买过一次就会停不下来
+        携带方便 品质在线`,
+            images: Array.from({length: 8}, (_, i) => `/images/perfume/xs/xs${i+1}.png`)
         },
         {
-          title: '设计师联名款',
-          images: Array.from({length: 8}, (_, i) => `/images/clothing/designer-${i+1}.jpg`)
+            title: '🍷·越南𝐐版香水福袋-  𝐫𝐦𝐛 79任选四瓶',
+            description: '这是一个关于越南香水福袋的描述。',
+            images: Array.from({length: 9}, (_, i) => `/images/perfume/yn/yn${i+1}.png`)
         }
       ]
     },
     en: {
       sections: [
         { 
-          title: 'Coach-Top',
-          description: 'Saddle Underarm Bag -(388 shipping)',
-          images: Array.from({length: 13}, (_, i) => `/images/bags/coach/${i+1}.png`)
+          title: '🍷·Perfume',
+          description: `About 4.5ml-10ml per bottle 
+          Full package glass bottle body 
+          It's the same old quality you can't stop buying once 
+          Easy to carry quality online`,
+          images: Array.from({length: 8}, (_, i) => `/images/perfume/xs/xs${i+1}.png`)
         },
         {
-          title: 'Designer Collaboration',
-          images: Array.from({length: 8}, (_, i) => `/images/clothing/designer-${i+1}.jpg`)
+          title: '🍷·Vietnam 𝐐 Perfume Bag - 𝐫𝐦𝐛 79 Choose 4 bottles',
+          description: `About 4.5ml-10ml per bottle 
+Full package glass bottle body 
+It's the same old quality you can't stop buying once 
+Easy to carry quality online`,
+images: Array.from({length: 9}, (_, i) => `/images/perfume/yn/yn${i+1}.png`)
         }
       ]
     }

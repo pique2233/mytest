@@ -15,8 +15,12 @@ export default function ClothingPage() {
     zh: {
       sections: [
         { 
-          title: '当季流行服饰',
-          images: Array.from({length: 8}, (_, i) => `/images/clothing/${i+1}.jpg`)
+          title: '👟·𝐊𝐞𝐞𝐧户外运动鞋- 𝐫𝐦𝐛 288包邮',
+          description: `小众球鞋推荐未融化的冰块色系,本身就超喜欢蓝色
+深浅蓝撞色后更讨巧啦! 粉色 
+无法拒绝的多巴胺！
+`,
+          images: Array.from({length: 14}, (_, i) => `/images/shoes/KEEN/${i+1}.png`)
         },
         {
           title: '设计师联名款',
@@ -27,8 +31,11 @@ export default function ClothingPage() {
     en: {
       sections: [
         { 
-          title: 'Fashion Collection',
-          images: Array.from({length: 8}, (_, i) => `/images/clothing/${i+1}.jpg`)
+          title: '👟·𝐊𝐞𝐞𝐧 Outdoor sneakers - 𝐫𝐦𝐛 288 free shipping',
+          description:` 'Niche sneakers recommend unmelted ice cube colors, which are super fond of blue 
+Deep light blue color after more flattering! pink 
+Can't say no to dopamine!`,
+images: Array.from({length: 14}, (_, i) => `/images/shoes/KEEN/${i+1}.png`)
         },
         {
           title: 'Designer Collaboration',
@@ -68,6 +75,7 @@ export default function ClothingPage() {
             <h2 className="text-3xl font-bold mb-8 text-center">
               {section.title}
             </h2>
+            <p className="text-center mb-4">{section.description}</p>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {section.images.map((img, imgIndex) => (

@@ -8,13 +8,15 @@ export default function Navbar({ language, setLanguage }) {
       { label: 'Contact Lenses', path: '/' },      // 首页
       { label: 'Clothing', path: '/clothing' },    // 服装页
       { label: 'Shoes', path: '/shoes' },          // 鞋类页
-      { label: 'Bags', path: '/bags' }             // 箱包页
+      { label: 'Bags', path: '/bags' }     ,
+      { label: 'Perfume', path: '/perfume' }             // 箱包页
     ],
     zh: [
       { label: '美瞳', path: '/' },               // 首页
       { label: '服装', path: '/clothing' },
       { label: '鞋', path: '/shoes' },
-      { label: '包', path: '/bags' }
+      { label: '包', path: '/bags' },
+      { label: '香水', path: '/perfume' }
     ]
   };
 
