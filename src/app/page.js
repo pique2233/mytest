@@ -13,9 +13,9 @@ export default function Home() {
 
   // 轮播图数据
   const banners = [
-    '/images/美瞳/banner1.jpg',
-    '/images/美瞳/banner2.jpg',
-    '/images/美瞳/banner3.jpg',
+    '/images/banner/2.jpg',
+    '/images/banner/3.jpg',
+    '/images/banner/4.jpg',
   ];
 
   // 内容数据
@@ -66,7 +66,7 @@ export default function Home() {
           className="h-full"
         >
           {banners.map((banner, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className="relative">
               <img 
                 src={banner}
                 alt={`Banner ${index + 1}`}

@@ -9,7 +9,11 @@ import 'swiper/css';
 export default function ClothingPage() {
   const [language, setLanguage] = useState('zh');
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const banners = [
+    '/images/banner/2.jpg',
+    '/images/banner/3.jpg',
+    '/images/banner/4.jpg',
+  ];
   // 服装页专属数据
   const contentData = {
     zh: {
@@ -17,11 +21,12 @@ export default function ClothingPage() {
         { 
           title: 'Coach顶级',
           description:`马鞍腋下包-(388包邮)`,
-          images: Array.from({length: 13}, (_, i) => `/images/bags/coach/${i+1}.png`)
+          images: Array.from({length: 16}, (_, i) => `/images/bags/coach/${i+1}.png`)
         },
         {
-          title: '设计师联名款',
-          images: Array.from({length: 8}, (_, i) => `/images/clothing/designer-${i+1}.jpg`)
+          title: '帆布包',
+          description: '帆布包-39',
+          images: Array.from({length: 5}, (_, i) => `/images/bags/fb/${i+1}.png`)
         }
       ]
     },
@@ -44,18 +49,18 @@ export default function ClothingPage() {
     <div className="min-h-screen flex flex-col">
       <Navbar language={language} setLanguage={setLanguage} />
       
-      {/* 专属轮播图 */}
-      <div className="w-full h-[400px] bg-gradient-to-r from-purple-50 to-pink-50">
+  {/* 轮播图 */}
+  <div className="w-full h-[600px]">
         <Swiper
           autoplay={{ delay: 3000 }}
           modules={[Autoplay]}
           className="h-full"
         >
-          {[1, 2, 3].map((num) => (
-            <SwiperSlide key={num}>
+          {banners.map((banner, index) => (
+            <SwiperSlide key={index} className="relative">
               <img 
-                src={`/images/clothing/banner-${num}.jpg`}
-                alt={`Fashion Banner ${num}`}
+                src={banner}
+                alt={`Banner ${index + 1}`}
                 className="w-full h-full object-cover"
               />
             </SwiperSlide>

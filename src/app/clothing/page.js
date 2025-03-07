@@ -5,35 +5,42 @@ import { Autoplay } from 'swiper/modules';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import 'swiper/css';
+import { Description } from '@headlessui/react';
 
 export default function ClothingPage() {
   const [language, setLanguage] = useState('zh');
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const banners = [
+    '/images/banner/2.jpg',
+    '/images/banner/3.jpg',
+    '/images/banner/4.jpg',
+  ];
   // 服装页专属数据
   const contentData = {
     zh: {
       sections: [
         { 
-          title: '当季流行服饰',
-          images: Array.from({length: 8}, (_, i) => `/images/clothing/${i+1}.jpg`)
+          title: ' 𝐌𝐋𝐁暗纹毛衣外套-rmb 139',
+          description:`羊毛40+包芯纱60
+原版一致含量
+面料真的牛逼炸了
+软软糯糯 亲肤不扎 巨细腻`,
+          images: Array.from({length: 7}, (_, i) => `/images/clothing/wt1/${i+1}.png`)
         },
-        {
-          title: '设计师联名款',
-          images: Array.from({length: 8}, (_, i) => `/images/clothing/designer-${i+1}.jpg`)
-        }
+   
       ]
     },
     en: {
       sections: [
         { 
-          title: 'Fashion Collection',
-          images: Array.from({length: 8}, (_, i) => `/images/clothing/${i+1}.jpg`)
+          title: '𝐌𝐋𝐁 Dark print sweater coat -rmb 139',
+          description:`Wool 40+ core-spun yarn 60 
+Original consistent content 
+The fabric really blew up 
+Soft waxy waxy skin do not tie giant fine`,
+          images: Array.from({length: 7}, (_, i) => `/images/clothing/wt1/${i+1}.png`)
         },
-        {
-          title: 'Designer Collaboration',
-          images: Array.from({length: 8}, (_, i) => `/images/clothing/designer-${i+1}.jpg`)
-        }
+   
       ]
     }
   };
@@ -42,18 +49,18 @@ export default function ClothingPage() {
     <div className="min-h-screen flex flex-col">
       <Navbar language={language} setLanguage={setLanguage} />
       
-      {/* 专属轮播图 */}
-      <div className="w-full h-[400px] bg-gradient-to-r from-purple-50 to-pink-50">
+     {/* 轮播图 */}
+     <div className="w-full h-[600px]">
         <Swiper
           autoplay={{ delay: 3000 }}
           modules={[Autoplay]}
           className="h-full"
         >
-          {[1, 2, 3].map((num) => (
-            <SwiperSlide key={num}>
+          {banners.map((banner, index) => (
+            <SwiperSlide key={index} className="relative">
               <img 
-                src={`/images/clothing/banner-${num}.jpg`}
-                alt={`Fashion Banner ${num}`}
+                src={banner}
+                alt={`Banner ${index + 1}`}
                 className="w-full h-full object-cover"
               />
             </SwiperSlide>
@@ -68,6 +75,7 @@ export default function ClothingPage() {
             <h2 className="text-3xl font-bold mb-8 text-center">
               {section.title}
             </h2>
+            <p className="text-center mb-4">{section.description}</p>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {section.images.map((img, imgIndex) => (

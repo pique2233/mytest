@@ -10,6 +10,11 @@ export default function ClothingPage() {
   const [language, setLanguage] = useState('zh');
   const [selectedImage, setSelectedImage] = useState(null);
 
+  const banners = [
+    '/images/banner/2.jpg',
+    '/images/banner/3.jpg',
+    '/images/banner/4.jpg',
+  ];
   // 服装页专属数据
   const contentData = {
     zh: {
@@ -22,10 +27,7 @@ export default function ClothingPage() {
 `,
           images: Array.from({length: 14}, (_, i) => `/images/shoes/KEEN/${i+1}.png`)
         },
-        {
-          title: '设计师联名款',
-          images: Array.from({length: 8}, (_, i) => `/images/clothing/designer-${i+1}.jpg`)
-        }
+   
       ]
     },
     en: {
@@ -37,10 +39,7 @@ Deep light blue color after more flattering! pink
 Can't say no to dopamine!`,
 images: Array.from({length: 14}, (_, i) => `/images/shoes/KEEN/${i+1}.png`)
         },
-        {
-          title: 'Designer Collaboration',
-          images: Array.from({length: 8}, (_, i) => `/images/clothing/designer-${i+1}.jpg`)
-        }
+    
       ]
     }
   };
@@ -49,25 +48,24 @@ images: Array.from({length: 14}, (_, i) => `/images/shoes/KEEN/${i+1}.png`)
     <div className="min-h-screen flex flex-col">
       <Navbar language={language} setLanguage={setLanguage} />
       
-      {/* 专属轮播图 */}
-      <div className="w-full h-[400px] bg-gradient-to-r from-purple-50 to-pink-50">
+       {/* 轮播图 */}
+    <div className="w-full h-[600px]">
         <Swiper
           autoplay={{ delay: 3000 }}
           modules={[Autoplay]}
           className="h-full"
         >
-          {[1, 2, 3].map((num) => (
-            <SwiperSlide key={num}>
+          {banners.map((banner, index) => (
+            <SwiperSlide key={index} className="relative">
               <img 
-                src={`/images/clothing/banner-${num}.jpg`}
-                alt={`Fashion Banner ${num}`}
+                src={banner}
+                alt={`Banner ${index + 1}`}
                 className="w-full h-full object-cover"
               />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-
       {/* 内容区域 */}
       <main className="flex-1 container mx-auto px-4 py-12">
         {contentData[language].sections.map((section, index) => (
