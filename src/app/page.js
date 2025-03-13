@@ -6,6 +6,7 @@ import { Autoplay } from 'swiper/modules';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';  // 使用相对路径
 import 'swiper/css';
+import { Description } from '@headlessui/react';
 
 export default function Home() {
   const [language, setLanguage] = useState('zh');
@@ -23,32 +24,44 @@ export default function Home() {
     zh: {
       sections: [
         { 
-          title: '热门美瞳推荐',
-          images: Array.from({ length: 8 }, (_, i) => `/images/contact-lenses/${i + 1}.jpg`)
+          title: 'Puff Girl-甜宠排队系列',
+          images: Array.from({ length: 16 }, (_, i) => `/images/美瞳/pullgirl/${i + 1}.png`)
         },
         {
-          title: '当季流行服饰',
-          images: Array.from({ length: 8 }, (_, i) => `/images/clothing/${i + 1}.jpg`)
+          title: '𝗣𝘂𝗳𝗳 𝗚𝗶𝗿𝗹寓言系列 ',
+          description:`👛单副88 两副158 三副198`,
+          images: Array.from({ length: 9 }, (_, i) => `/images/美瞳/puff/${i + 1}.png`)
         },
         {
-          title: '精选鞋款',
-          images: Array.from({ length: 8 }, (_, i) => `/images/shoes/${i + 1}.jpg`)
+          title: '𝐒𝐈𝐍𝐂𝐄𝐂𝐎𝐍早春心动信号',
+          description:`舒适度Max💧精选含硅半年抛
+多风格自由切换的敏感眼刚需
+
+活动价格: 78/1副
+98/2副138/4副178/6副（每单赠滴眼液1瓶）`,
+          images: Array.from({ length: 1 }, (_, i) => `/images/美瞳/心动信号/${i + 1}.png`)
         }
       ]
     },
     en: {
       sections: [
         { 
-          title: 'Top Contact Lenses',
-          images: Array.from({ length: 8 }, (_, i) => `/images/美瞳/banner${i + 1}.jpg`)
+          title: 'Puff Girl- Sweet pet line series',
+          images: Array.from({ length: 16 }, (_, i) => `/images/美瞳/pullgirl/${i + 1}.png`)
         },
         {
-          title: 'Fashion Clothing',
-          images: Array.from({ length: 8 }, (_, i) => `/images/clothing/${i + 1}.jpg`)
+          title: '𝗣𝘂𝗳𝗳 𝗚𝗶𝗿𝗹 Fable series',
+          description:`👛 Single crew 88, two crew 158, three crew 198`,
+          images: Array.from({ length: 9 }, (_, i) => `/images/美瞳/puff/${i + 1}.png`)
         },
         {
-          title: 'Featured Shoes',
-          images: Array.from({ length: 8 }, (_, i) => `/images/shoes/${i + 1}.jpg`)
+          title: '𝐒𝐈𝐍𝐂𝐄𝐂𝐎𝐍-Early spring heart signals',
+          description:`Comfort Max💧 Selected silicon half year toss 
+Multi-style free switching for sensitive eyes just as needed 
+ 
+Activity price: 78/1 pair 
+98/2 pairs 138/4 pairs 178/6 pairs (complimentary 1 bottle of eye drops per pair)`,
+          images: Array.from({ length: 1 }, (_, i) => `/images/美瞳/心动信号/${i + 1}.png`)
         }
       ]
     }
@@ -84,6 +97,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold mb-8 text-center">
               {section.title}
             </h2>
+            <p className="text-center mb-4">{section.description}</p>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {section.images.map((img, imgIndex) => (

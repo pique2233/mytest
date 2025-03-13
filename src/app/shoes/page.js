@@ -27,6 +27,13 @@ export default function ClothingPage() {
 `,
           images: Array.from({length: 14}, (_, i) => `/images/shoes/KEEN/${i+1}.png`)
         },
+        { 
+          title: '👟·匡威顶级- 𝐫𝐦𝐛 188',
+          description: `鞋舌 鞋面 鞋型 鞋垫 鞋盒 
+全部都是最顶级品质 !!!!
+`,
+          images: Array.from({length: 10}, (_, i) => `/images/shoes/kw/${i+1}.png`)
+        },
    
       ]
     },
@@ -39,6 +46,14 @@ Deep light blue color after more flattering! pink
 Can't say no to dopamine!`,
 images: Array.from({length: 14}, (_, i) => `/images/shoes/KEEN/${i+1}.png`)
         },
+        { 
+          title: '👟·Converse Top- 𝐫𝐦𝐛 188',
+          description: `Tongue upper shoe type insole shoe box 
+All of the highest quality!!!!
+`,
+          images: Array.from({length: 10}, (_, i) => `/images/shoes/kw/${i+1}.png`)
+        },
+        
     
       ]
     }

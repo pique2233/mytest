@@ -23,6 +23,11 @@ export default function ClothingPage() {
           description:`马鞍腋下包-(388包邮)`,
           images: Array.from({length: 16}, (_, i) => `/images/bags/coach/${i+1}.png`)
         },
+        { 
+          title: 'CoachLaurel香布雷系列流浪包-💰368',
+          description:`💰368`,
+          images: Array.from({length: 12}, (_, i) => `/images/bags/coach2/${i+1}.png`)
+        },
         {
           title: '帆布包',
           description: '帆布包-39',
@@ -37,9 +42,14 @@ export default function ClothingPage() {
           description: 'Saddle Underarm Bag -(388 shipping)',
           images: Array.from({length: 13}, (_, i) => `/images/bags/coach/${i+1}.png`)
         },
+        { 
+          title: 'Coach-Laurel-💰368',
+          description:`💰368`,
+          images: Array.from({length: 12}, (_, i) => `/images/bags/coach2/${i+1}.png`)
+        },
         {
           title: 'Designer Collaboration',
-          images: Array.from({length: 8}, (_, i) => `/images/clothing/designer-${i+1}.jpg`)
+          images: Array.from({length: 5}, (_, i) => `/images/bags/fb/${i+1}.png`)
         }
       ]
     }
